@@ -47,32 +47,23 @@
  <!--      <script src="responsiveslides.min.js"></script> -->
    </head>
    <body>
-     <div id="fb-root"></div>
-<script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = 'https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.0';
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
        
 <div class="nav">
-    <div class="nav-header center">
-        <div class="nav-title ">
-          <img src="{% static 'images/Bimbo%20Family%20affairs%20Logo%20main%20(3).png' %} " class="center" alt="Logo" style="width:40px;">
+    <div class="nav-header">
+        <div class="nav-title">
+          <img src="{% static 'images/Bimbo%20Family%20affairs%20Logo%20main%20(3).png' %} " alt="Logo" style="width:40px;">
         </div>
     </div>
-        
     <div class="nav-btn">
         <label for="nav-check">
           <span></span>
           <span></span>
           <span></span>
         </label>
-       <!--   <img src="{% static 'images/Bimbo%20Family%20affairs%20Logo%20main%20(3).png' %}"class ="img" alt="Logo" style="width:40px;"> -->
     </div>
 
-  <div class=" right center nav-links ">
+  <input type="checkbox" id="nav-check">
+  <div class=" right nav-links ">
       <a href="#" target="_blank">Home</a>
       <a href="#" target="_blank">About us</a>
       <a href="#" target="_blank">Connect</a>
@@ -141,8 +132,8 @@
           <a href="images/BImbs.jpg" target="_blank">
             <img src="{% static 'images/first.jpg' %}" class=" img-responsive" alt="Sessions" style="width:100%">
             <div class="caption">
-                    <h3><b>Sessions</b></h3>
-                   <!--  <p>Click here to experience some of our sessions</p> -->
+                    <h3>Sessions</h3>
+                    <p>Click here to experience some of our sessions</p>
             </div>
           </a>
         </div>
@@ -153,8 +144,8 @@
           <a href="images/second.jpg" target="_blank">
             <img src="{% static 'images/second.jpg' %}" class=" img-responsive" alt="Events" style="width:100%">
             <div class="caption">
-                  <h3><b>Events</b></h3>
-             <!--  <p>Click here to know about our next events</p> -->
+                  <h3>Events</h3>
+              <p>Click here to know about our next events</p>
             </div>
           </a>
         </div>
@@ -165,8 +156,8 @@
           <a href="https://www.bimbofamilyaffairs.wordpress.com" target="_blank">
             <img src="{% static 'images/Blog.jpg' %}"class=" img-responsive" alt="Blog Scoop" style="width:100% ">
             <div class="caption">
-              <h3><b>Blog Scoop</b></h3>
-              <!-- <p>Stay here with upcoming events</p> -->
+              <h3>Blog Scoop</h3>
+              <p>Stay here with upcoming events</p>
             </div>
           </a>
         </div>
@@ -177,12 +168,12 @@
 <!--Second Row -->
     <div class="row">
       <div class="col-sm-3">
-        <div class="foo thumbnail ">
+        <div class=" ">
           <a href="images/Family.png" target="_blank">
             <img src="{% static 'images/Family.png' %}" class=" img-responsive" alt="Family" style="width:100%">
             <div class="caption">
-                  <h2><b>Join our community</b><h2>
-                
+                  <h3>Be our community</h3>
+                <p>We are always listening</p>
             </div>
           </a>
         </div>
@@ -192,42 +183,37 @@
         <div class=" ">
 
           <div class="caption bottomspace">
+            <h2>Quote of the Day</h2>
+            {% for quote in num_quotes %}
+              <h4>{{quote.summary}}</h4> 
+             {% endfor %} 
 
-            <p>&nbsp;</p>
-            <<p>&nbsp;</p>
-
-            <p>&nbsp;</p>
-                  <h1 class="quote">Quote of the Day</h1>
-        <h2>Everyone you meet is figthing a battle be nice</h2>
-          </div>
-
-<!--           <div class="caption bottomspace">
-            <P>&nbsp</P>>
-<script type="text/javascript" src="https://www.brainyquote.com/link/quotebr.js"></script>
-<h1><i><a href="https://www.brainyquote.com/quote_of_the_day" target="_blank" rel="nofollow"> </a></i></h1>
-       <div>
+  <!--      <div>
         <p>QUOTES: {{ quote.summary }}</p>
         <h1><a href="">{{ quote.title }}</a></h1>
-    </div>
-
-    <iframe src="//rss.bloople.net/?url=https%3A%2F%2Fwww.brainyquote.com%2Fquote_of_the_day&showtitle=false&type=html"></iframe>
+    </div> -->
             
-          </div> -->
+          </div>
         </div>
       </div>
 
       <div class=" col-sm-4  boxshape">
           <div class="foo1 thumbnail ">
-
+            <a class="twitter-timeline" data-height="120" data-dnt="true" href="https://twitter.com/einstein4ij?ref_src=twsrc%5Etfw"></a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+              <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-dnt="true" data-show-count="false">Tweet</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+              
+              <a href="https://twitter.com/einstein4ij?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-show-count="false">Follow @einstein4ij</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<!--            <img src="{% static 'images/Blog.jpg' %}" class=" img-responsive" alt="Media" style="width:100% ">-->
               
               
               <!--Instagram--->
- <!-- InstaWidget -->
-<a class="widget" href="https://instawidget.net/v/user/BImbofamilyAffairs" id="link-9665fac7547fe883c21c338fd2a64781f7f5af7f67e666841917710a73447d6a">@BImbofamilyAffairs</a>
-<script src="https://instawidget.net/js/instawidget.js?u=9665fac7547fe883c21c338fd2a64781f7f5af7f67e666841917710a73447d6a&width=300px"></script>
->
-<!-- facebook -->
-<div class="fb-page" data-href="https://www.facebook.com/playhousecentre" data-tabs="timeline" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/playhousecentre" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/playhousecentre">Playhousecentre</a></blockquote></div>
+ <!-- LightWidget WIDGET --><script src="https://cdn.lightwidget.com/widgets/lightwidget.js"></script><iframe src="//lightwidget.com/widgets/969046e8c82a5161bea18f3a5989bf92.html" scrolling="no" allowtransparency="true" class="lightwidget-widget" style="width:100%;border:0;overflow:hidden;"></iframe>
+              
+              <!--Facebook-->
+              <!-- InstaWidget -->
+<!-- InstaWidget -->
+<a href="https://instawidget.net/v/user/einstein4ij" id="link-be30327cf4a4e5a84083b1c8b50e33fb181c76eb0b7923d293392d1b0ddfef25">@einstein4ij</a>
+<script src="https://instawidget.net/js/instawidget.js?u=be30327cf4a4e5a84083b1c8b50e33fb181c76eb0b7923d293392d1b0ddfef25&width=300px"></script>
               
       </div>
     </div>
@@ -247,7 +233,6 @@
    
 
  </div>
-
  </body>
 
 

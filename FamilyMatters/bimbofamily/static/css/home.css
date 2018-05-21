@@ -9,13 +9,13 @@
     
 }
 .headerLinks {
-	margin-top: -1%;
-	margin-left: 75%;
-	dis
-	play: fixed;
+  margin-top: -1%;
+  margin-left: 75%;
+  dis
+  play: fixed;
 }
 h3{
-	color: black
+  color: black
 }
 
 .foo {
@@ -126,6 +126,7 @@ body {
 }
 
   .right {
+    display: block;
       text-align: right;
       float: right;
     }
@@ -139,8 +140,21 @@ body {
 }
 
 .boxshape {
-  height: 10px;
+  height: 15px;
   
+}
+
+
+/* Makes images fully responsive 
+
+.img-responsive,
+.thumbnail > img,
+.thumbnail a > img,
+.carousel-inner > .item > img,
+.carousel-inner > .item > a > img {
+  display: block;
+  width: 100%;
+  height: auto;
 }
 
 /* ------------------- Carousel Styling ------------------- */
@@ -223,6 +237,7 @@ width: 100%; // Add this
 .threesquares {
  width: 64%;
  max-width: 64%;
+ background-color: darkgrey;
 }
 
 .fullwidth{
@@ -249,13 +264,49 @@ width: 100%; // Add this
 }
 
 .foursquares{
-  margin: 0 auto;
+  margin: 0 auto !important;
+  padding: 0 auto !important;
   min-width: 100%;
 }
+
 .bottomspace
 {
  /* margin-bottom: 10px;*/
  /* margin-top:30px;*/
   margin-right: 40px;
   margin-left: 0px;
+}
+/*#footer {background:#6a93d4;min-width:100%;height:75px;float:left}
+#footerContent {margin: 0 auto;width:900px;padding:15px;}*/
+body,html {
+  margin:0;
+  padding:0;
+}
+.removespace{
+margin-bottom: -25px !important;
+line-height: 0px;
+}
+.removespace2{
+  margin-top: -20px !important;
+}
+.paddingside{
+  margin-right: 30px;
+}
+.colorunder{
+  background-color:darkgrey;
+}
+
+.widget{
+  max-width: 50px !important;
+  max-height:50px !important;
+}
+.colorunder{
+  background-color:darkgrey;
+}
+.quote{
+  font-size: 22px
+}
+
+div.thumbnail:hover { 
+    background-color: yellow;
 }

@@ -18,10 +18,12 @@ from django.urls import path
 from django.conf.urls import include
 from django.urls import path
 from django.views.generic import RedirectView
+from bimbofamily import views
 
 urlpatterns = [
     path('bimbofamily/', include('bimbofamily.urls')),
     path('admin/', admin.site.urls),
-    
+    path('email/', views.emailView, name='email'),
+    path('success/', views.successView, name='success'),
     path('', RedirectView.as_view(url='/bimbofamily/', permanent=True)),
 ] 

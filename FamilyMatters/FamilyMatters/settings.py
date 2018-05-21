@@ -37,10 +37,18 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'bimbofamily.apps.BimbofamilyConfig'
+    'bimbofamily.apps.BimbofamilyConfig',
+    
+    # 3rd party
+    'social_django'
 ]
 
 MIDDLEWARE = [
+#    'social_core.backends.google.GoogleOAuth2',
+#    'social_core.backends.twiter.TwitterOAuth',
+#    'social_core.backends.google.GoogleOAuth',
+#    'social_core.backends.google.GoogleOAuth2',
+#    'social_core.backends.facebook.FacebookOAuth2',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -67,6 +75,7 @@ TEMPLATES = [
         },
     },
 ]
+
 
 WSGI_APPLICATION = 'FamilyMatters.wsgi.application'
 

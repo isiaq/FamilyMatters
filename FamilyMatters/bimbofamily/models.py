@@ -1,9 +1,5 @@
 from django.db import models
-
-# Create your models here.
-
 from django.urls import reverse #Used to generate urls by reversing the URL patterns
-
 
 class Category(models.Model):
     """
