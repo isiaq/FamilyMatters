@@ -26,4 +26,9 @@ urlpatterns = [
     path('email/', views.emailView, name='email'),
     path('success/', views.successView, name='success'),
     path('', RedirectView.as_view(url='/bimbofamily/', permanent=True)),
+    path('about/', views.about, name='about'),
+    path('session/', views.session, name='session'),
+    path('connect/', views.connect, name='connect'),
+    path('memorial/', views.memorial, name='memorial'),
+    
 ] 

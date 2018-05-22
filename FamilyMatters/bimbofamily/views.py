@@ -34,6 +34,20 @@ def emailView(request):
 def successView(request):
     return HttpResponse('Success! Thank you for your message.')
 
+def about(request):
+    return render_to_response('bimbofamily/about.html')
+
+
+def session(request):
+    return render_to_response('bimbofamily/session.html')
+
+def connect(request):
+    return render_to_response('bimbofamily/connect.html')
+
+def media(request):
+    return render_to_response('bimbofamily/media.html')
+def memorial(request):
+    return render_to_response('bimbofamily/memorial.html')
 
 def index(request):
     """
