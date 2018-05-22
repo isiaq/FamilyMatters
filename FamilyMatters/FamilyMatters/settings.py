@@ -39,8 +39,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'bimbofamily.apps.BimbofamilyConfig',
     
-    # 3rd party
-    'social_django'
 ]
 
 MIDDLEWARE = [
