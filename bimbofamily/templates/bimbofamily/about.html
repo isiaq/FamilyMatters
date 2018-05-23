@@ -1,0 +1,164 @@
+{% load static %}
+<! DOCTYPE html>
+<html>
+   <head>
+      <meta charset=" =utf-8">
+      {% block title %}<title>Bimbo Family Affairs</title>{% endblock %}
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+      <meta property="og:title" content="Bimbo Family Affairs" />
+      <meta property="og:type" content="website" />
+      <meta property="og:url" content="https://www.bimbofamilyaffairs.com" />
+      <meta property="og:site_name" content="Bimbo Family Affair" />
+      <meta name="robots" content="Index, Follow">
+      <meta name="description" content="Good given and I thank Adediji and Gbenga for helping me out with this." />
+      <meta name="keywords" content="Motivation, Public Speaking, Motivational Speaker, Catalyst, Mentorship, Life Coach"/>
+      <meta name="author" content="Magic Fingers" />
+
+
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <style>
+    /* Remove the navbar's default margin-bottom and rounded borders */ 
+    .navbar {
+      margin-bottom: 0;
+      border-radius: 0;
+    }
+    .navbar-brand{
+      margin-top: -20px !important;
+    }
+      .div1{
+          text-align: justify;
+      }
+    /* Add a gray background color and some padding to the footer */
+    footer {
+      background-color: #f2f2f2;
+      padding: 25px;
+    }
+    .yellow{
+      background-color: yellow;
+    }
+.foo {
+    outline: 0.5px solid darkgray;
+    border:solid 0.5px ;
+}
+  .carousel-inner img {
+      width: 100%; /* Set width to 100% */
+      margin: auto;
+      min-height:200px;
+  }
+
+  /* Hide the carousel text when the screen is less than 600 pixels wide */
+  @media (max-width: 600px) {
+    .carousel-caption {
+      display: none; 
+    }
+  }
+  </style>
+</head>
+<body>
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      <a class="navbar-brand" href="#"> <img src="{% static 'images/Bimbo%20Family%20affairs%20Logo%20main%20(3).png' %}" alt="Logo" style="width:60px;"></a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li ><a href="\bimbofamily">Home</a></li>
+        <li class="active"><a href="#">About Us</a></li>
+        <li class=" dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Connect
+        <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="#">Email</a></li>
+          <li><a target="_blank" href="http://www.facebook.com/playhousecentre">Facebook</a></li>
+          <li><a target="_blank"  href="http://www.instagram.com/bimbofamilyaffairs">Instagram</a></li>
+        </ul>
+      </li>
+        <li><a href="https://www.bimbofamilyaffairs.com">Blog</a></li>
+        <li><a href="#">Media</a></li>
+        <li><a href="#"><span class="glyphicon glyphicon-log-in"></a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="row">
+
+    <div class="col-md-12 padding-0">  <img src="{% static 'images/aboutus1.jpg' %}" class="img-responsive" style="width:100%" alt="Image">
+    </div>    
+</div> 
+<br>
+    <br>
+    <br>
+<div class="container text-center">    
+<br>
+  <div class="row">
+    <div class="col-sm-7">
+      <b>About Us</b>
+      <p class="div1" ;>Bimbo Family Affairs is a platform created for all matters relating to the family. We see the family as the foundation of our existence and as such, we need one another for nourishment and growth. We believe that if each of us can take responsibility for our family, society will be better for us and as such; everyone in this is an integral part of the unit and must be respected. This initially started as a family blog on matters relating to relationships, parenting, children and general life style, our goal is to restore the society one family at a time. Through our interactive sessions, counselling, writings, public speaking curriculum development and other possible ways, we want our message of love and a unified family to reach the world.</p>
+    </div>
+      
+      <div class="col-sm-1">
+      </div>
+    <div class="col-sm-4">
+     
+        
+    <!---Courasel-->
+
+  <div id="myCarousel" class="carousel slide" data-ride="carousel">
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+      <li data-target="#myCarousel" data-slide-to="1"></li>
+      <li data-target="#myCarousel" data-slide-to="2"></li>
+    </ol>
+
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner">
+
+      <div class="item active">
+        <img src="{% static 'images/Quote1.jpg' %}" class="foo" alt=Blog style="width:100% ">
+        <div class="carousel-caption">
+        </div>
+      </div>
+
+      <div class="item">
+        <img src="{% static 'images/Quote2.jpg' %}" class="foo" alt=Blog style="width:100% ">
+        <div class="carousel-caption">
+        </div>
+      </div>
+    
+      <div class="item">
+       <img src="{% static 'images/Quote3.jpg' %}" class="foo" alt=Blog style="width:100% ">
+        <div class="carousel-caption">
+ 
+        </div>
+      </div>
+  
+    </div>
+
+      </div>
+    </div>
+  </div>
+</div><br>
+<footer class="container-fluid ">
+    <div>
+      <span>
+      <img src="{% static 'images/Bimbo%20Family%20affairs%20Logo%20main%20(3).png' %}" alt="Logo" style="width:40px;">
+    </span>
+    </div>
+</footer>
+
+</body>
+</html>

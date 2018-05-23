@@ -1,0 +1,134 @@
+{% load static %}
+<! DOCTYPE html>
+<html>
+   <head>
+      <meta charset=" =utf-8">
+      {% block title %}<title>Bimbo Family Affairs</title>{% endblock %}
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+      <meta property="og:title" content="Bimbo Family Affairs" />
+      <meta property="og:type" content="website" />
+      <meta property="og:url" content="https://www.bimbofamilyaffairs.com" />
+      <meta property="og:site_name" content="Bimbo Family Affair" />
+      <meta name="robots" content="Index, Follow">
+      <meta name="description" content="Good given and I thank Adediji and Gbenga for helping me out with this." />
+      <meta name="keywords" content="Motivation, Public Speaking, Motivational Speaker, Catalyst, Mentorship, Life Coach"/>
+      <meta name="author" content="Magic Fingers" />
+
+
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <style>
+    /* Remove the navbar's default margin-bottom and rounded borders */ 
+    .navbar {
+      margin-bottom: 0;
+      border-radius: 0;
+    }
+    .navbar-brand{
+      margin-top: -20px !important;
+    }
+    
+    /* Add a gray background color and some padding to the footer */
+    footer {
+      background-color: #f2f2f2;
+      padding: 25px;
+    }
+    .yellow{
+      background-color: yellow;
+    }
+    .div1{
+          text-align: justify;
+      }
+   
+.minheight{
+        min-height: 80%;
+      }
+      
+.paddingbottom{
+    padding-bottom: 10px !important;
+      }
+   .paddingtop{
+       
+    padding-top: 50px !important;
+      } 
+   .paddingtop1{
+       
+    padding-top: 20px !important;
+      } 
+.foo {
+    outline: 2px solid darkgrey;
+    border:solid 2px ;
+}
+.foo1 {
+    outline: 0.5px solid orange;
+    border:solid 0.5px orange;
+}
+    
+  .carousel-inner img {
+      width: 100%; /* Set width to 100% */
+      margin: auto;
+      min-height:200px;
+  }
+
+  /* Hide the carousel text when the screen is less than 600 pixels wide */
+  @media (max-width: 600px) {
+    .carousel-caption {
+      display: none; 
+    }
+  }
+  </style>
+</head>
+<body>
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      <a class="navbar-brand" href="#"> <img src="{% static 'images/Bimbo%20Family%20affairs%20Logo%20main%20(3).png' %}" alt="Logo" style="width:60px;"></a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li class="active"><a href="#">Home</a></li>
+        <li><a href="/about">About Us</a></li>
+          <li class="active dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Connect
+        <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="#">Email</a></li>
+          <li><a target="_blank" href="http://www.facebook.com/playhousecentre">Facebook</a></li>
+          <li><a target="_blank"  href="http://www.instagram.com/bimbofamilyaffairs">Instagram</a></li>
+        </ul>
+      </li>
+
+        <li><a href="https://www.bimbofamilyaffairs.wordpress.com">Blog</a></li>
+        <li><a href="#">Media</a></li>
+        <li><a href="#"><span class="glyphicon glyphicon-log-in"></a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+                    {% block content %}
+
+
+                    {% endblock %}
+<footer class="container-fluid ">
+    <div>
+        
+     <span> <img src="{% static 'images/Bimbo%20Family%20affairs%20Logo%20main%20(3).png' %}" alt="Logo" style="width:40px;">
+       
+      <p>#FamilyMatters</p>
+    </span>
+    </div>
+</footer>
+
+</body>
+</html>
