@@ -3,7 +3,7 @@ from django.shortcuts import render_to_response
 from django.utils import timezone
 from .models import Quote, Author, Category,Language
 from django.core.mail import send_mail, BadHeaderError
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
 from django.shortcuts import render, redirect
 from .forms import ContactForm
 import smtplib
@@ -80,7 +80,7 @@ def about(request):
         form = ContactForm(request.POST)
         if form.is_valid():
             # name=form.cleaned_data['name']
-            # subject = form.cleaned_data['subject']
+            subject = "Contact From Bimbo Family Affairs"
             from_email = form.cleaned_data['from_email']
             message = form.cleaned_data['message']
             port=587
@@ -90,9 +90,10 @@ def about(request):
             email_conn.starttls()
             email_conn.login("isiaq.ao@gmail.com", "Gbongy4sure!")
             try:
-                email_conn.sendmail(from_email, 'diji.odutola@gmail.com',message)
+                email_conn.sendmail(from_email, 'isiaq.ao@gmail.com', message)
+                return JsonResponse({'status':200, 'sent':True})
             except BadHeaderError:
-                return HttpResponse('Invalid header found.')
+                return JsonResponse({'status':500, 'sent':False})
             # return redirect('success')
     return render(request, "bimbofamily/about.html", {'form': form})
 
