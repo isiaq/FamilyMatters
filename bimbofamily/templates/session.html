@@ -21,6 +21,15 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <style>
     /* Remove the navbar's default margin-bottom and rounded borders */ 
+.form-control
+{
+  width: 100%;
+  max-height: 60%;
+  text-align:center;
+}
+.sessions{
+  padding-left: -30px
+}
     .navbar {
       margin-bottom: 0;
       border-radius: 0;
@@ -91,9 +100,9 @@
   
 <div class="container text-center">    
   <div class="row">
-    <div class="col-sm-4">
+    <div class="col-sm-4 sessions">
       <p class="div1" ;>Through our interactive and counselling sessions, listening service, writings .......everyone as an integral part of the unit must be acknowledged and respected. We want our message of love and a unified family be acted on and spread through the world.</p>
-      <h2>Days</h2>
+      <b>Days</b>
       <p>Sunday evening </p>
       <p>Tuesday am/pm</p>
       <p>Tuesday am/pm</p>
@@ -108,11 +117,15 @@ Our listening sessions can be booked on line or through the number provided.
 Kindly fill the form and click send. 
 .</p>
     </div>
-    <div class="col-sm-4">
-        <h1>Contact Us</h1>
+    <div class="col-sm-4 text-center">
+        <b>Contact Us</b>
         <form method="post">
         {% csrf_token %}
-        {{ form.as_p }}
+        {{form.as_p}}
+<!--         {{ form.name }}
+        {{ form.from_email }}
+        {{ form.subject }}
+        {{ form.message }} -->
         <div class="form-actions">
       <button type="submit">Send</button>
     </div>

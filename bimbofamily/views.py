@@ -7,6 +7,45 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, redirect
 from .forms import ContactForm
 import smtplib
+from django.http import HttpRequest
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.views.generic import DetailView
+from fm.views import AjaxCreateView
+from bimbofamily.forms import ContactForm
+from django.template import RequestContext
+
+
+class FeedbackCreateView(AjaxCreateView):
+    form_class = ContactForm
+
+from bimbofamily.models import Album, AlbumImage
+def media(request):
+    list = Album.objects.filter(is_visible=True).order_by('-created')
+    paginator = Paginator(list, 10)
+
+    page = request.GET.get('page')
+    try:
+        albums = paginator.page(page)
+    except PageNotAnInteger:
+        albums = paginator.page(1) # If page is not an integer, deliver first page.
+    except EmptyPage:
+        albums = paginator.page(paginator.num_pages) # If page is out of range (e.g.  9999), deliver last page of results.
+
+    return render(request, 'gallery.html', { 'albums': list })
+
+class AlbumDetail(DetailView):
+     model = Album
+
+     def get_context_data(self, **kwargs):
+        # Call the base implementation first to get a context
+        context = super(AlbumDetail, self).get_context_data(**kwargs)
+        # Add in a QuerySet of all the images
+        context['images'] = AlbumImage.objects.filter(album=self.object.id)
+        return context
+
+def handler404(request):
+    assert isinstance(request, HttpRequest)
+    return render(request, 'handler404.html', None, None, 404)
 
 def emailView(request):
     if request.method == 'GET':
@@ -28,24 +67,63 @@ def emailView(request):
                 email_conn.sendmail(from_email, 'diji.odutola@gmail.com',message)
             except BadHeaderError:
                 return HttpResponse('Invalid header found.')
-            return redirect('success')
+            return redirect('successView')
     return render(request, "email.html", {'form': form})
 
 def successView(request):
     return HttpResponse('Success! Thank you for your message.')
 
 def about(request):
-    return render_to_response('bimbofamily/about.html')
+    if request.method == 'GET':
+        form = ContactForm()
+    else:
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            # name=form.cleaned_data['name']
+            # subject = form.cleaned_data['subject']
+            from_email = form.cleaned_data['from_email']
+            message = form.cleaned_data['message']
+            port=587
+            host="smtp.gmail.com"
+            email_conn = smtplib.SMTP(host, port)
+            email_conn.ehlo()
+            email_conn.starttls()
+            email_conn.login("isiaq.ao@gmail.com", "Gbongy4sure!")
+            try:
+                email_conn.sendmail(from_email, 'diji.odutola@gmail.com',message)
+            except BadHeaderError:
+                return HttpResponse('Invalid header found.')
+            # return redirect('success')
+    return render(request, "bimbofamily/about.html", {'form': form})
 
 
 def session(request):
-    return render_to_response('bimbofamily/session.html')
-
+    if request.method == 'GET':
+        form = ContactForm()
+    else:
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            # name=form.cleaned_data['name']
+            # subject = form.cleaned_data['subject']
+            from_email = form.cleaned_data['from_email']
+            message = form.cleaned_data['message']
+            port=587
+            host="smtp.gmail.com"
+            email_conn = smtplib.SMTP(host, port)
+            email_conn.ehlo()
+            email_conn.starttls()
+            email_conn.login("isiaq.ao@gmail.com", "Gbongy4sure!")
+            try:
+                email_conn.sendmail(from_email, 'diji.odutola@gmail.com',message)
+            except BadHeaderError:
+                return HttpResponse('Invalid header found.')
+            return redirect('/success')
+    return render(request, "session.html", {'form': form})
 def connect(request):
     return render_to_response('bimbofamily/connect.html')
 
-def media(request):
-    return render_to_response('bimbofamily/media.html')
+#def media(request):
+#    return render_to_response('bimbofamily/media.html')
 def memorial(request):
     return render_to_response('bimbofamily/memorial.html')
 

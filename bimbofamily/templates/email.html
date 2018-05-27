@@ -1,5 +1,6 @@
 <!-- templates/email.html -->
 
+<!--
 <h1>Contact Us</h1>
 <form method="post">
     {% csrf_token %}
@@ -8,3 +9,14 @@
       <button type="submit">Send</button>
     </div>
 </form>
+-->
+<div class="modal hide" id="contactModal">
+    <form action="" method="post">
+        <table>
+            {{ form.as_table }}
+        </table>
+        <div class="form-actions">
+            <button type="submit">Send</button>
+        </div>
+</form>
+</div>

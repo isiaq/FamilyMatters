@@ -73,7 +73,7 @@
         <li><a href="#">About Us</a></li>
         <li><a href="#">Connect</a></li>
         <li><a href="#">Blog</a></li>
-        <li><a href="#">Media</a></li>
+        <li><a href="media">Media</a></li>
         <li><a href="#"><span class="glyphicon glyphicon-log-in"></a></li>
       </ul>
     </div>
@@ -99,7 +99,7 @@
        <p>Everyone you meet is fighting a battle be nice</p>
       </div>
       <div class="well">
-        <img src="{% static 'images/Blog.jpg %}" alt=Blog style="width:40% ">
+        <img src="{% static 'images/Blog.jpg' %}" alt=Blog style="width:40% ">
        <p>Some text..</p>
       </div>
     </div>
@@ -112,6 +112,16 @@
     </span>
     </div>
 </footer>
+<div class="modal hide" id="contactModal">
+    <form action="" method="post">
+        <table>
+           {form.as_p}}
+        </table>
+        <div class="form-actions">
+            <button type="submit">Send</button>
+        </div>
+</form>
+</div>
 
 </body>
 </html>

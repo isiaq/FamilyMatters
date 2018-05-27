@@ -1,9 +1,9 @@
 {% load static %}
-<! DOCTYPE html>
+<!DOCTYPE html>
 <html>
    <head>
       <meta charset=" =utf-8">
-      {% block title %}<title>Bimbo Family Affairs</title>{% endblock %}
+      {% block title %}<title>Bimbo Family Affairs </title>{% endblock %}
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
       <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
       <meta property="og:title" content="Bimbo Family Affairs" />
@@ -17,13 +17,17 @@
 
 
    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <style>
     /* Remove the navbar's default margin-bottom and rounded borders */ 
     .navbar {
       margin-bottom: 0;
       border-radius: 0;
+    }
+    .contactus{
+      color: white;
+      text-decoration-color: white;
     }
     .navbar-brand{
       margin-top: -20px !important;
@@ -74,19 +78,19 @@
 
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li ><a href="\bimbofamily">Home</a></li>
+        <li ><a href="/">Home</a></li>
         <li class="active"><a href="#">About Us</a></li>
         <li class=" dropdown">
         <a class="dropdown-toggle" data-toggle="dropdown" href="#">Connect
         <span class="caret"></span></a>
         <ul class="dropdown-menu">
-          <li><a href="#">Email</a></li>
+          <li><a class ="contact" data-toggle="modal" href="#contactModal">Contact us</a></li>
           <li><a target="_blank" href="http://www.facebook.com/playhousecentre">Facebook</a></li>
           <li><a target="_blank"  href="http://www.instagram.com/bimbofamilyaffairs">Instagram</a></li>
         </ul>
       </li>
-        <li><a href="https://www.bimbofamilyaffairs.com">Blog</a></li>
-        <li><a href="#">Media</a></li>
+        <li><a href="https://www.bimbofamilyaffairs.wordpress.com">Blog</a></li>
+        <li><a href="/media">Media</a></li>
         <li><a href="#"><span class="glyphicon glyphicon-log-in"></a></li>
       </ul>
     </div>
@@ -94,9 +98,9 @@
 </nav>
 
 <div class="row">
-
-    <div class="col-md-12 padding-0">  <img src="{% static 'images/aboutus1.jpg' %}" class="img-responsive" style="width:100%" alt="Image">
-    </div>    
+  <div class="col-md-12 padding-0">
+    <img src="{% static 'images/aboutus1.jpg' %}" class="img-responsive" style="width:100%" alt="Image">
+  </div>    
 </div> 
 <br>
     <br>
@@ -148,7 +152,7 @@
   
     </div>
 
-      </div>
+  </div>
     </div>
   </div>
 </div><br>
@@ -159,6 +163,84 @@
     </span>
     </div>
 </footer>
+
+<div class="modal hide" id="contactModal">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="myModalLabel" class="contactus">Contact Us</h3>
+  </div>
+  <div class="modal-body">
+    
+
+
+        <form method="post" class="contactus" id="contactForm">
+        {% csrf_token %}
+        {{form.as_p}}
+<!--         {{ form.name }}
+        {{ form.from_email }}
+        {{ form.subject }}
+        {{ form.message }} -->
+        <div class="form-actions">
+
+
+<!-- 
+          <button type="submit">Send</button> -->
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+    <button id="Sendbutton" class="btn btn-primary">Send</button>
+  </div>
+</div>
+
+<script>
+    $(".contact").click(function(ev) { // for each edit contact url
+      console.log(ev);
+        ev.preventDefault(); // prevent navigation
+        $('#contactModal').modal('show');
+        $('#contactModal').removeClass('hide');
+        var url = $(this).data("form"); // get the contact form url
+        // $("#contactModal").load(url, function() { // load the url into the modal
+        //     $(this).modal('show'); // display the modal on url load
+        // });
+        return false; // prevent the click propagation
+    });
+
+
+    $("#Sendbutton").click(function(ev)
+        {
+          var datastring = $("#contactForm").serialize();
+
+            $.ajax({
+                  type: "POST",
+                  url: "/about",
+                  data: datastring,
+                  dataType: "json",
+                  success: function(data) {
+                      //var obj = jQuery.parseJSON(data); if the dataType is not specified as json uncomment this
+                      // do what ever you want with the server response
+                      console.log(data)
+                  },
+                  error: function() {
+                      alert('error handing here');
+                  }
+              });
+        });
+
+    // $('.contact-form').live('submit', function() {
+    //     $.ajax({ 
+    //         type: $(this).attr('method'), 
+    //         url: this.action, 
+    //         data: $(this).serialize(),
+    //         context: this,
+    //         success: function(data, status) {
+    //             $('#contactModal').html(data);
+    //         }
+    //     });
+    //     return false;
+    // });
+</script>
 
 </body>
 </html>

@@ -15,7 +15,7 @@ import os
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-
+CRISPY_TEMPLATE_PACK = 'bootstrap3'
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.0/howto/deployment/checklist/
 
@@ -25,7 +25,9 @@ SECRET_KEY = 'szmz57!6wow^pjg%9^(5)3&uo2u8(v!=(um=0$11wfbd&t-5#g'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+
+ALLOWED_HOSTS = ['0.0.0.0','127.0.0.1','localhost',]
+INTERNAL_IPS = ('0.0.0.0','127.0.0.1','localhost',)
 
 
 # Application definition
@@ -37,9 +39,18 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sitemaps',
+    'django.contrib.sites',
     'bimbofamily.apps.BimbofamilyConfig',
-    
+    'photologue',
+    'sortedm2m',
+    'material.admin',
+    'imagekit',
+    'material',
+    'app.apps.AppConfig',
+    'crispy_forms',
 ]
+SITE_ID = 1
 
 MIDDLEWARE = [
 #    'social_core.backends.google.GoogleOAuth2',
@@ -126,3 +137,12 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = BASE_DIR + '/static/'
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR + '/media/'
+
+# STATICFILES_FINDERS = (
+#     'django.contrib.staticfiles.finders.FileSystemFinder',
+#     'django.contrib.staticfiles.finders.AppDirectoriesFinder'
+# )

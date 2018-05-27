@@ -16,19 +16,28 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from django.conf.urls import include
-from django.urls import path
+from django.urls import path, re_path
 from django.views.generic import RedirectView
 from bimbofamily import views
+from django.conf import settings
+from django.conf.urls.static import static
+import bimbofamily.views
+# import app.forms
+# import app.views
+
 
 urlpatterns = [
-    path('bimbofamily/', include('bimbofamily.urls')),
-    path('admin/', admin.site.urls),
-    path('email/', views.emailView, name='email'),
-    path('success/', views.successView, name='success'),
+    path('', include('bimbofamily.urls')),
+    path('admin', admin.site.urls),
+    path('email', views.emailView, name='email'),
+    path('success', views.successView, name='success'),
     path('', RedirectView.as_view(url='/bimbofamily/', permanent=True)),
-    path('about/', views.about, name='about'),
-    path('session/', views.session, name='session'),
-    path('connect/', views.connect, name='connect'),
-    path('memorial/', views.memorial, name='memorial'),
+    path('about', views.about, name='about'),
+    path('session', views.session, name='session'),
+    path('media', views.media, name='media'),
+    path('connect', views.connect, name='connect'),
+    path('memorial', views.memorial, name='memorial'),
+    re_path(r'^favicon\.ico$', RedirectView.as_view(url='/static/icons/favicon.ico', permanent=True)),
+    re_path(r'^(?P<slug>[-\w]+)$', views.AlbumDetail.as_view(), name='album'), #app.views.AlbumView.as_view()
     
-] 
+]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) 
