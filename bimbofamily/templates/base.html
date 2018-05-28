@@ -27,7 +27,6 @@
     <link href="{% static 'site.css' %}" rel="stylesheet" type="text/css" />
     {% block css %}{% endblock %}
 
-    <script src="/static/material/js/jquery.js"></script>
     <script src="/static/material/js/jquery-2.2.0.js"></script>
     <script src="/static/material/js/jquery.datetimepicker.full.js"></script>
     <script src="/static/material/js/jquery.formset.js"></script>
@@ -120,7 +119,7 @@
       <ul class="nav navbar-nav navbar-right">
         <li ><a href="/">Home</a></li>
         <li ><a href="/about">About Us</a></li>
-          <li class="active dropdown">
+          <li class=" dropdown">
         <a class="dropdown-toggle" data-toggle="dropdown" href="#">Connect
         <span class="caret"></span></a>
         <ul class="dropdown-menu">
@@ -130,7 +129,7 @@
         </ul>
       </li>
         <li><a href="https://www.bimbofamilyaffairs.wordpress.com">Blog</a></li>
-        <li><a href="/media">Media</a></li>
+        <li class="active"><a href="/media">Media</a></li>
         <li><a href="#"><span class="glyphicon glyphicon-log-in"></a></li>
       </ul>
     </div>
