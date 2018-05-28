@@ -27,8 +27,19 @@
   max-height: 60%;
   text-align:center;
 }
+    .contactus{
+      color: white;
+      text-decoration-color: white;
+    }
+
+    .darkgrey{
+      background-color: black;
+    }
 .sessions{
   padding-left: -30px
+}
+.left{
+  text-align: left !important;
 }
     .navbar {
       margin-bottom: 0;
@@ -80,11 +91,19 @@
 
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li class="active"><a href="#">Home</a></li>
-        <li><a href="#">About Us</a></li>
-        <li><a href="#">Connect</a></li>
-        <li><a href="#">Blog</a></li>
-        <li><a href="#">Media</a></li>
+        <li ><a href="/">Home</a></li>
+        <li ><a href="/about">About Us</a></li>
+          <li class="active dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Connect
+        <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+         <li><a class ="contact" data-toggle="modal" href="#contactModal">Contact us</a></li>
+          <li><a target="_blank" href="http://www.facebook.com/playhousecentre">Facebook</a></li>
+          <li><a target="_blank"  href="http://www.instagram.com/bimbofamilyaffairs">Instagram</a></li>
+        </ul>
+      </li>
+        <li><a href="https://www.bimbofamilyaffairs.wordpress.com">Blog</a></li>
+        <li><a href="/media">Media</a></li>
         <li><a href="#"><span class="glyphicon glyphicon-log-in"></a></li>
       </ul>
     </div>
@@ -102,10 +121,10 @@
   <div class="row">
     <div class="col-sm-4 sessions">
       <p class="div1" ;>Through our interactive and counselling sessions, listening service, writings .......everyone as an integral part of the unit must be acknowledged and respected. We want our message of love and a unified family be acted on and spread through the world.</p>
-      <b>Days</b>
-      <p>Sunday evening </p>
-      <p>Tuesday am/pm</p>
-      <p>Tuesday am/pm</p>
+      <p class="left"><b>Days</b></p>
+      <p class="left">Sunday evening </p>
+      <p class="left">Tuesday am/pm</p>
+      <p class="left">Tuesday am/pm</p>
 
  
 
@@ -177,6 +196,68 @@ Kindly fill the form and click send.
     </span>
     </div>
 </footer>
+
+
+
+<div class="modal hide" id="contactModal">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="myModalLabel" class="contactus">Contact Us</h3>
+  </div>
+  <div class="modal-body darkgrey">
+    
+
+
+        <form method="post" class="contactus" id="contactForm">
+        {% csrf_token %}
+        {{form.as_p}}
+<!--         {{ form.name }}
+        {{ form.from_email }}
+        {{ form.subject }}
+        {{ form.message }} -->
+        <div class="form-actions">
+
+
+<!-- 
+          <button type="submit">Send</button> -->
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+    <button id="Sendbutton" class="btn btn-primary">Send</button>
+  </div>
+</div>
+
+<script>
+  $(".contact").click(function(ev) { // for each edit contact url
+    ev.preventDefault(); // prevent navigation
+    $('#contactModal').modal('show');
+    $('#contactModal').removeClass('hide');
+    return false; // prevent the click propagation
+  });
+
+  $("#Sendbutton").click(function sendEmail(ev) {
+    var datastring = $("#contactForm").serialize();
+    $.ajax({
+      type: "POST",
+      url: "/about",
+      data: datastring,
+      dataType: "json",
+      success: function sendEmailCallback(data) {
+        if (data.status === 200) {
+          alert('Contact email sent.');
+          $('#contactModal').modal('hide');
+        } else {
+          alert('Error sending email.');
+        }
+      },
+      error: function() {
+        alert('Error sending email.');
+      }
+    });
+  });
+</script>
 
 </body>
 </html>

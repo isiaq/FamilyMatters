@@ -28,7 +28,10 @@
     .navbar-brand{
       margin-top: -20px !important;
     }
-    
+     .contactus{
+      color: white;
+      text-decoration-color: white;
+    }
     /* Add a gray background color and some padding to the footer */
     footer {
       background-color: #f2f2f2;
@@ -37,6 +40,10 @@
     .yellow{
       background-color: yellow;
     }
+    .darkgrey{
+      background-color: black;
+    }
+
     .div1{
           text-align: justify;
       }
@@ -102,7 +109,7 @@
         <a class="dropdown-toggle" data-toggle="dropdown" href="#">Connect
         <span class="caret"></span></a>
         <ul class="dropdown-menu">
-          <li><a href="#">Email</a></li>
+          <li><a class ="contact" data-toggle="modal" href="#contactModal">Contact us</a></li>
           <li><a target="_blank" href="http://www.facebook.com/playhousecentre">Facebook</a></li>
           <li><a target="_blank"  href="http://www.instagram.com/bimbofamilyaffairs">Instagram</a></li>
         </ul>
@@ -165,7 +172,6 @@
       <a href="/media">
       <img src="{% static 'images/second.jpg' %}" class="img-responsive" style="width:100%" alt="Events">
       <b>Events</b>
-    </a>
       <p>Click here to know more abour our event </p>    
     </div>
       
@@ -237,6 +243,65 @@
     </span>
     </div>
 </footer>
+<div class="modal hide" id="contactModal">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="myModalLabel" class="contactus">Contact Us</h3>
+  </div>
+  <div class="modal-body darkgrey">
+    
+
+
+        <form method="post" class="contactus" id="contactForm">
+        {% csrf_token %}
+        {{form.as_p}}
+<!--         {{ form.name }}
+        {{ form.from_email }}
+        {{ form.subject }}
+        {{ form.message }} -->
+        <div class="form-actions">
+
+
+<!-- 
+          <button type="submit">Send</button> -->
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+    <button id="Sendbutton" class="btn btn-primary">Send</button>
+  </div>
+</div>
+
+<script>
+  $(".contact").click(function(ev) { // for each edit contact url
+    ev.preventDefault(); // prevent navigation
+    $('#contactModal').modal('show');
+    $('#contactModal').removeClass('hide');
+    return false; // prevent the click propagation
+  });
+
+  $("#Sendbutton").click(function sendEmail(ev) {
+    var datastring = $("#contactForm").serialize();
+    $.ajax({
+      type: "POST",
+      url: "/about",
+      data: datastring,
+      dataType: "json",
+      success: function sendEmailCallback(data) {
+        if (data.status === 200) {
+          alert('Contact email sent.');
+          $('#contactModal').modal('hide');
+        } else {
+          alert('Error sending email.');
+        }
+      },
+      error: function() {
+        alert('Error sending email.');
+      }
+    });
+  });
+</script>
 
 </body>
 </html>

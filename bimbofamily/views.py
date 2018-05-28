@@ -80,7 +80,7 @@ def about(request):
         form = ContactForm(request.POST)
         if form.is_valid():
             # name=form.cleaned_data['name']
-            subject = "Contact From Bimbo Family Affairs"
+            subject = form.cleaned_data['subject']
             from_email = form.cleaned_data['from_email']
             message = form.cleaned_data['message']
             port=587
@@ -126,24 +126,52 @@ def connect(request):
 #def media(request):
 #    return render_to_response('bimbofamily/media.html')
 def memorial(request):
-    return render_to_response('bimbofamily/memorial.html')
+    if request.method == 'GET':
+        form = ContactForm()
+    else:
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            # name=form.cleaned_data['name']
+            subject = form.cleaned_data['subject']
+            from_email = form.cleaned_data['from_email']
+            message = form.cleaned_data['message']
+            port=587
+            host="smtp.gmail.com"
+            email_conn = smtplib.SMTP(host, port)
+            email_conn.ehlo()
+            email_conn.starttls()
+            email_conn.login("isiaq.ao@gmail.com", "Gbongy4sure!")
+            try:
+                email_conn.sendmail(from_email, 'diji.odutola@gmail.com', message)
+                return JsonResponse({'status':200, 'sent':True})
+            except BadHeaderError:
+                return JsonResponse({'status':500, 'sent':False})
+            # return redirect('success')
+    return render(request, "bimbofamily/memorial.html", {'form': form})
 
 def index(request):
-    """
-    View function for home page of site.
-    """
-    # Generate counts of some of the main objects
-    num_quotes=Quote.objects.all()
-    
-    # Available quotes (status = 'a')
-    num_authors=Author.objects.count()
-    # The 'all()' is implied by default.
-
-
-    
-    # Render the HTML template index.html with the data in the context variable
-    return render_to_response('bimbofamily/index.html',{'num_quotes': num_quotes})
-# Create your views here.
+    if request.method == 'GET':
+        form = ContactForm()
+    else:
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            # name=form.cleaned_data['name']
+            subject = form.cleaned_data['subject']
+            from_email = form.cleaned_data['from_email']
+            message = form.cleaned_data['message']
+            port=587
+            host="smtp.gmail.com"
+            email_conn = smtplib.SMTP(host, port)
+            email_conn.ehlo()
+            email_conn.starttls()
+            email_conn.login("isiaq.ao@gmail.com", "Gbongy4sure!")
+            try:
+                email_conn.sendmail(from_email, 'diji.odutola@gmail.com', message)
+                return JsonResponse({'status':200, 'sent':True})
+            except BadHeaderError:
+                return JsonResponse({'status':500, 'sent':False})
+            # return redirect('success')
+    return render(request, "bimbofamily/index.html", {'form': form})
 from django.views import generic
 
 class QuoteListView(generic.ListView):

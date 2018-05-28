@@ -108,20 +108,20 @@
 
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li class="active"><a href="#">Home</a></li>
+        <li ><a href="/">Home</a></li>
         <li><a href="/about">About Us</a></li>
           <li class="active dropdown">
         <a class="dropdown-toggle" data-toggle="dropdown" href="#">Connect
         <span class="caret"></span></a>
         <ul class="dropdown-menu">
-          <li><a href="#">Email</a></li>
+         <li><a class ="contact" data-toggle="modal" href="#contactModal">Contact us</a></li>
           <li><a target="_blank" href="http://www.facebook.com/playhousecentre">Facebook</a></li>
           <li><a target="_blank"  href="http://www.instagram.com/bimbofamilyaffairs">Instagram</a></li>
         </ul>
       </li>
 
         <li><a href="https://www.bimbofamilyaffairs.wordpress.com">Blog</a></li>
-        <li><a href="#">Media</a></li>
+        <li class="active"><a href="#">Media</a></li>
         <li><a href="#"><span class="glyphicon glyphicon-log-in"></a></li>
       </ul>
     </div>
@@ -139,5 +139,60 @@
     </span>
   </div>
 </footer>
+
+<div class="modal hide" id="contactModal">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="myModalLabel" class="contactus">Contact Us</h3>
+  </div>
+  <div class="modal-body">
+    
+
+
+        <form method="post" class="contactus" id="contactForm">
+        {% csrf_token %}
+        {{form.as_p}}
+        <div class="form-actions">
+
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+    <button id="Sendbutton" class="btn btn-primary">Send</button>
+  </div>
+</div>
+
+<script>
+  $(".contact").click(function(ev) { // for each edit contact url
+    ev.preventDefault(); // prevent navigation
+    $('#contactModal').modal('show');
+    $('#contactModal').removeClass('hide');
+    return false; // prevent the click propagation
+  });
+
+  $("#Sendbutton").click(function sendEmail(ev) {
+    var datastring = $("#contactForm").serialize();
+    $.ajax({
+      type: "POST",
+      url: "/about",
+      data: datastring,
+      dataType: "json",
+      success: function sendEmailCallback(data) {
+        if (data.status === 200) {
+          alert('Contact email sent.');
+          $('#contactModal').modal('hide');
+        } else {
+          alert('Error sending email.');
+        }
+      },
+      error: function() {
+        alert('Error sending email.');
+      }
+    });
+  });
+</script>
+
+
 </body>
 </html>
