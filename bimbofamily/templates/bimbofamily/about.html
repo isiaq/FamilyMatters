@@ -25,6 +25,15 @@
       margin-bottom: 0;
       border-radius: 0;
     }
+    .reduceform{
+      max-height: 80%
+      max-width:40%;
+    }
+    .staymiddle{
+
+      float: right;
+      background-image:url('Email.jpg'); 
+    }
     .contactus{
       color: white;
       text-decoration-color: white;
@@ -164,16 +173,16 @@
     </div>
 </footer>
 
-<div class="modal hide" id="contactModal">
+<div class="modal hide staymiddle " id="contactModal">
   <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
     <h3 id="myModalLabel" class="contactus">Contact Us</h3>
   </div>
-  <div class="modal-body">
+  <div class=" modal-body ">
     
+ 
 
-
-        <form method="post" class="contactus" id="contactForm">
+        <form method="post" class="contactus col-sm-4 staymiddle" id="contactForm">
         {% csrf_token %}
         {{form.as_p}}
 <!--         {{ form.name }}
@@ -182,16 +191,16 @@
         {{ form.message }} -->
         <div class="form-actions">
 
-
+  <div class="modal-footer">
+    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+    <button id="Sendbutton" class="btn btn-primary">Send</button>
+  </div>
 <!-- 
           <button type="submit">Send</button> -->
       </div>
     </form>
   </div>
-  <div class="modal-footer">
-    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
-    <button id="Sendbutton" class="btn btn-primary">Send</button>
-  </div>
+
 </div>
 
 <script>

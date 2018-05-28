@@ -2,30 +2,35 @@
 {% load staticfiles %}
 
 {% block content %}
-
-<div class="slider">
+<div class="row">
+  <div class="col-md-12 padding-0">
+  
+    <img src="{% static 'images/Media.jpg' %}" alt="BImbo Photo Gallery" class="opaque img-responsive">
+  </div>    
+</div> 
+<!-- <div class="slider">
     <ul class="slides">
         <li>
-            <img src="{% static 'images/bannerb' %}" alt="Django Photo Gallery" class="opaque">
+            <img src="{% static 'images/Media.jpg' %}" alt="BImbo Photo Gallery" class="opaque">
             <div class="caption center-align">
                 <h1>
-                   Bimbo Photo Gallery <br/>
-                    <small class="light text-lighten-3 hide-on-small-only">Album Images </small>
+                    <br/>
+                    <small class="light text-lighten-3 hide-on-small-only"> </small>
                 </h1>
                 
             </div>
         </li>
         <li>
-            <img src="{% static 'images/bannerb' %}" alt="Django Photo Gallery" class="opaque">
+            <img src="{% static 'images/Media.jpg' %}" alt="Django Photo Gallery" class="opaque">
             <div class="caption left-align">
                 <h1>
-                    Bimbo Family Affairs Events and Session's Gallery<br />
-                    <small class="light text-lighten-3 hide-on-small-only">All our events pictures can be viewed here.</small>
+                   <br />
+                    <small class="light text-lighten-3 hide-on-small-only"></small>
                 </h1>
             </div>
         </li>
     </ul>
-</div>
+</div> -->
 <div class="container">
     <div class="row">
         {% for album in albums %}
