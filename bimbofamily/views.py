@@ -90,7 +90,7 @@ def about(request):
             email_conn.starttls()
             email_conn.login("isiaq.ao@gmail.com", "Gbongy4sure!")
             try:
-                email_conn.sendmail(from_email, 'isiaq.ao@gmail.com', message)
+                email_conn.sendmail(from_email, 'diji.odutola@gmail.com', message)
                 return JsonResponse({'status':200, 'sent':True})
             except BadHeaderError:
                 return JsonResponse({'status':500, 'sent':False})
